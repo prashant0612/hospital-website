@@ -38,7 +38,7 @@ const MainPage = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative font-serif">
       <Header />
       <AboutUs />
       <Services />

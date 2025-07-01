@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Mail, GraduationCap, Fan as Fax } from "lucide-react";
+import { Phone, Mail, GraduationCap, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -22,6 +22,25 @@ const Footer = () => {
               since 2023. Providing world-class healthcare services and
               comprehensive medical education.
             </p>
+
+            {/* Social Media Links */}
+            <div className="flex justify-center gap-4 mb-6 sm:mb-8">
+              <a href="#" className="text-blue-200 hover:text-white transition-colors">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-blue-200 hover:text-white transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-blue-200 hover:text-white transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-blue-200 hover:text-white transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-blue-200 hover:text-white transition-colors">
+                <Youtube className="w-5 h-5" />
+              </a>
+            </div>
 
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-blue-200 mb-6 sm:mb-8">
               <span>© 2024 HMCH. All rights reserved.</span>

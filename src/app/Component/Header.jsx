@@ -191,7 +191,7 @@ const Header = () => {
   };
 
   return (
-    <div className="relative font-sans">
+    <div className="relative">
       {/* Top Contact Bar */}
       <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-2 px-4 shadow-sm hidden lg:block">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
