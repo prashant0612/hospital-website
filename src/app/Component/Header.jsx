@@ -219,28 +219,25 @@ const Header = () => {
   return (
     <div className="relative">
       {/* Top Contact Bar */}
-      <div className="bg-[#e37562] text-white py-2 px-4 shadow-sm hidden lg:block">
+      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-2 px-4 shadow-sm hidden lg:block">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
-          {/* Left Section */}
           <div className="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-6">
             <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4 text-white/80" />
-              <span className="text-white/90 text-xs md:text-sm">
+              <Phone className="w-4 h-4 text-blue-200" />
+              <span className="text-blue-100 text-xs md:text-sm">
                 Emergency: 9304637349
               </span>
             </div>
             <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4 text-white/80" />
-              <span className="text-white/90 text-xs md:text-sm">
+              <Mail className="w-4 h-4 text-blue-200" />
+              <span className="text-blue-100 text-xs md:text-sm">
                 himalayauniv.hmch@gmail.com
               </span>
             </div>
           </div>
-
-          {/* Right Section */}
           <div className="flex items-center space-x-2 mt-1 md:mt-0">
-            <MapPin className="w-4 h-4 text-white/80" />
-            <span className="text-white/90 text-xs md:text-sm">
+            <MapPin className="w-4 h-4 text-blue-200" />
+            <span className="text-blue-100 text-xs md:text-sm">
               Paliganj, Chiksi, Kinjar Road, State Highway, Patna, Bihar 801110
             </span>
           </div>
@@ -248,7 +245,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-     <header
+      <header
         className={`bg-white shadow-md transition-all duration-300 ${
           isSticky
             ? "fixed top-0 left-0 right-0 z-40 shadow-xl animate-dropIn"
@@ -260,7 +257,7 @@ const Header = () => {
             {/* Mobile Menu Button - Left Side */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 rounded-md text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+              className="lg:hidden p-2 rounded-md text-blue-800 hover:bg-blue-50 transition-colors duration-200"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -295,10 +292,10 @@ const Header = () => {
                 </div>
               </div>
               <div>
-                <h1 className="text-xl lg:text-2xl font-bold text-blue-800 leading-tight">
+                <h1 className="text-xl lg:text-2xl font-bold text-blue-900 leading-tight">
                   HIMALAYA MEDICAL COLLEGE & HOSPITAL
                 </h1>
-                <div className="text-blue-600 text-xs lg:text-sm space-y-1">
+                <div className="text-blue-700 text-xs lg:text-sm space-y-1">
                   <p className="font-semibold">
                     Run By: Himalaya Educational Trust
                   </p>
@@ -324,10 +321,10 @@ const Header = () => {
 
           {/* Mobile College Info */}
           <div className="lg:hidden mt-1 text-center pb-2">
-            <h1 className="text-base sm:text-lg font-bold text-blue-800 leading-tight">
+            <h1 className="text-base sm:text-lg font-bold text-blue-900 leading-tight">
               HIMALAYA MEDICAL COLLEGE & HOSPITAL
             </h1>
-            <div className="text-blue-600 text-xs mt-1 space-y-1">
+            <div className="text-blue-700 text-xs mt-1 space-y-1">
               <p className="font-semibold">
                 Run By: Himalaya Educational Trust
               </p>
@@ -337,7 +334,7 @@ const Header = () => {
 
         {/* Navigation Menu */}
         <nav
-          className={`bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white ${
+          className={`bg-gradient-to-r from-blue-800 to-blue-900 text-white ${
             isSticky ? "shadow-lg transition-all ease-in-out duration-200" : ""
           }`}
         >
@@ -348,7 +345,7 @@ const Header = () => {
                 <div key={index} className="relative group">
                   <a
                     href={item.href}
-                    className="flex items-center text-xs space-x-1 px-2 py-2 hover:bg-blue-500 hover:bg-opacity-80 transition-colors duration-200 font-medium"
+                    className="flex items-center text-xs space-x-1 px-2 py-2 hover:bg-blue-700 transition-colors duration-200 font-medium"
                     onMouseEnter={() =>
                       item.dropdown && setActiveDropdown(item.name)
                     }
@@ -362,7 +359,7 @@ const Header = () => {
                   {/* Dropdown Menu */}
                   {item.dropdown && activeDropdown === item.name && (
                     <div
-                      className="absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-b-lg min-w-48 z-50 border-t-4 border-blue-400"
+                      className="absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-b-lg min-w-48 z-50 border-t-4 border-blue-600"
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
@@ -370,7 +367,7 @@ const Header = () => {
                         <a
                           key={dropIndex}
                           href="#"
-                          className="px-4 py-3 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 border-b border-gray-100 last:border-b-0 text-xs font-medium flex items-center space-x-2"
+                          className="px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 border-b border-gray-100 last:border-b-0 text-xs font-medium flex items-center space-x-2"
                         >
                           {item.name === "Hospital" && dropIndex === 3 ? (
                             <Ambulance className="w-3 h-3" />
@@ -405,7 +402,7 @@ const Header = () => {
 
                   {/* Menu Content with slide animation */}
                   <motion.div
-                    className="absolute left-0 top-0 h-full w-3/4 max-w-xs bg-gradient-to-b from-blue-500 to-blue-600 shadow-xl"
+                    className="absolute left-0 top-0 h-full w-3/4 max-w-xs bg-blue-900 shadow-xl"
                     initial="hidden"
                     animate="visible"
                     exit="exit"
@@ -418,7 +415,7 @@ const Header = () => {
                   >
                     <div className="h-full flex flex-col">
                       {/* Menu Header */}
-                      <div className="flex items-center justify-between p-4 border-b border-blue-400 border-opacity-50">
+                      <div className="flex items-center justify-between p-4 border-b border-blue-800">
                         <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg bg-white">
                           <img
                             src="/logo.png"
@@ -428,14 +425,14 @@ const Header = () => {
                         </div>
                         <button
                           onClick={toggleMobileMenu}
-                          className="p-2 rounded-md text-white hover:bg-blue-400 hover:bg-opacity-50 transition-colors duration-200"
+                          className="p-2 rounded-md text-white hover:bg-blue-800 transition-colors duration-200"
                         >
                           <X className="w-6 h-6" />
                         </button>
                       </div>
 
                       {/* Action Buttons */}
-                      <div className="border-b border-blue-400 border-opacity-50 p-4">
+                      <div className="border-b border-blue-700 p-4">
                         <div className="grid grid-cols-2 gap-2">
                           {actionButtons.map((button, index) => (
                             <motion.a
@@ -463,7 +460,7 @@ const Header = () => {
                             transition={{ delay: index * 0.03 + 0.2 }}
                           >
                             <div
-                              className="flex items-center justify-between px-4 py-3 hover:bg-blue-400 hover:bg-opacity-50 transition-colors duration-200 border-b border-blue-400 border-opacity-30"
+                              className="flex items-center justify-between px-4 py-3 hover:bg-blue-800 transition-colors duration-200 border-b border-blue-800"
                               onClick={() =>
                                 item.dropdown && handleDropdownToggle(item.name)
                               }
@@ -486,7 +483,7 @@ const Header = () => {
                             {/* Dropdown */}
                             {item.dropdown && activeDropdown === item.name && (
                               <motion.div
-                                className="bg-blue-400 bg-opacity-80 border-l-4 border-blue-200"
+                                className="bg-blue-800 border-l-4 border-blue-400"
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
@@ -497,7 +494,7 @@ const Header = () => {
                                     <motion.a
                                       key={dropIndex}
                                       href="#"
-                                      className="px-8 py-2 text-xs hover:bg-blue-300 hover:bg-opacity-50 transition-colors duration-200 text-blue-50 flex items-center space-x-2"
+                                      className="px-8 py-2 text-xs hover:bg-blue-700 transition-colors duration-200 text-blue-100 flex items-center space-x-2"
                                       initial={{ opacity: 0 }}
                                       animate={{ opacity: 1 }}
                                       transition={{ delay: dropIndex * 0.05 }}
