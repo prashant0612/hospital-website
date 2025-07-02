@@ -89,7 +89,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className=" bg-gray-50 pt-12">
+    <div className=" bg-gray-50">
       {/* About Content */}
       <section className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
