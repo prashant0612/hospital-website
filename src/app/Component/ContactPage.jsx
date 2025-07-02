@@ -340,7 +340,7 @@ const ContactPage = () => {
                     onSubmit={handleSubmit}
                     className="space-y-4 sm:space-y-6"
                   >
-                    <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="flex flex-wrap flex-col w-full">
                       <div>
                         <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                           Full Name *
