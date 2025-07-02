@@ -189,10 +189,10 @@ const Testimonials = () => {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-8 md:py-12 bg-gradient-to-r from-gray-50 to-blue-50">
+      {/* <section className="py-8 md:py-12 bg-gradient-to-r from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-4 md:gap-6 items-center justify-between">
-            {/* Search Bar */}
+            
             <div className="relative w-full lg:flex-1 lg:max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 md:w-5 md:h-5" />
               <input
@@ -204,7 +204,7 @@ const Testimonials = () => {
               />
             </div>
 
-            {/* Category Filter */}
+           
             <div className="flex flex-wrap gap-2 w-full lg:w-auto justify-center lg:justify-start">
               {categories.map((category) => (
                 <button
@@ -223,7 +223,7 @@ const Testimonials = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Featured Testimonial Carousel */}
       <section className="py-12 md:py-20 bg-white">
