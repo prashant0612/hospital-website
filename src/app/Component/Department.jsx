@@ -1,44 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   GraduationCap,
-  Heart,
   Users,
   Award,
   Building,
-  Stethoscope,
   BookOpen,
-  Shield,
-  Phone,
-  Mail,
-  MapPin,
-  Star,
   CheckCircle,
   ArrowRight,
-  Globe,
-  Calendar,
-  Target,
-  Eye,
-  Lightbulb,
-  Brain,
-  Activity,
-  Microscope,
-  Pill,
-  Bone,
-  Baby,
   Search,
-  Filter,
   ChevronRight,
-  Clock,
   UserCheck,
-  Zap,
-  Beaker,
-  Scissors,
-  Thermometer,
-  Syringe,
-  HeartPulse,
-  Scan,
-  Waves,
 } from "lucide-react";
+
+import { departments } from "../Data/data";
 
 const Departments = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -50,340 +24,6 @@ const Departments = () => {
     { id: "clinical", name: "Clinical Sciences", count: 8 },
     { id: "preclinical", name: "Pre-Clinical Sciences", count: 5 },
     { id: "surgical", name: "Surgical Specialties", count: 3 },
-  ];
-
-  const departments = [
-    {
-      id: 1,
-      name: "Anatomy",
-      category: "preclinical",
-      icon: Bone,
-      color: "from-blue-600 to-indigo-700",
-      bgColor: "bg-blue-50",
-      description: "Study of human body structure and organization",
-      details:
-        "Our Anatomy department provides comprehensive understanding of human body structure through modern teaching methods including cadaveric dissection, histology, and embryology.",
-      facilities: [
-        "Modern Dissection Hall",
-        "Digital Microscopy Lab",
-        "Museum with Specimens",
-        "Histology Laboratory",
-      ],
-      faculty: 8,
-      students: 120,
-      image:
-        "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 2,
-      name: "Physiology",
-      category: "preclinical",
-      icon: HeartPulse,
-      color: "from-red-600 to-pink-700",
-      bgColor: "bg-red-50",
-      description: "Understanding human body functions and mechanisms",
-      details:
-        "The Physiology department focuses on how the human body works, covering cardiovascular, respiratory, nervous, and other body systems.",
-      facilities: [
-        "Exercise Physiology Lab",
-        "Neurophysiology Unit",
-        "Cardiovascular Lab",
-        "Research Facility",
-      ],
-      faculty: 6,
-      students: 120,
-      image:
-        "https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 3,
-      name: "Biochemistry",
-      category: "preclinical",
-      icon: Beaker,
-      color: "from-green-600 to-emerald-700",
-      bgColor: "bg-green-50",
-      description: "Chemical processes within living organisms",
-      details:
-        "Our Biochemistry department explores the chemical basis of life, metabolism, and molecular mechanisms of diseases.",
-      facilities: [
-        "Advanced Laboratory",
-        "Spectrophotometry Unit",
-        "Electrophoresis Lab",
-        "Clinical Biochemistry",
-      ],
-      faculty: 7,
-      students: 120,
-      image:
-        "https://images.pexels.com/photos/5452274/pexels-photo-5452274.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 4,
-      name: "Pathology",
-      category: "preclinical",
-      icon: Microscope,
-      color: "from-purple-600 to-violet-700",
-      bgColor: "bg-purple-50",
-      description: "Study of disease causes and effects",
-      details:
-        "The Pathology department provides diagnostic services and teaches the nature of diseases through laboratory investigations.",
-      facilities: [
-        "Histopathology Lab",
-        "Cytology Unit",
-        "Autopsy Room",
-        "Digital Pathology",
-      ],
-      faculty: 5,
-      students: 120,
-      image:
-        "https://images.pexels.com/photos/5452299/pexels-photo-5452299.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 5,
-      name: "Microbiology",
-      category: "preclinical",
-      icon: Zap,
-      color: "from-teal-600 to-cyan-700",
-      bgColor: "bg-teal-50",
-      description: "Study of microorganisms and infectious diseases",
-      details:
-        "Our Microbiology department focuses on bacteria, viruses, fungi, and parasites, their role in health and disease.",
-      facilities: [
-        "Bacteriology Lab",
-        "Virology Unit",
-        "Mycology Section",
-        "Parasitology Lab",
-      ],
-      faculty: 4,
-      students: 120,
-      image:
-        "https://images.pexels.com/photos/5452290/pexels-photo-5452290.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 6,
-      name: "General Medicine",
-      category: "clinical",
-      icon: Stethoscope,
-      color: "from-blue-700 to-indigo-800",
-      bgColor: "bg-blue-50",
-      description: "Comprehensive medical care for adults",
-      details:
-        "Our General Medicine department provides comprehensive healthcare for adult patients with various medical conditions.",
-      facilities: [
-        "General Medicine Ward",
-        "ICU",
-        "Emergency Department",
-        "Outpatient Clinic",
-      ],
-      faculty: 12,
-      students: 80,
-      image:
-        "https://images.pexels.com/photos/5452297/pexels-photo-5452297.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 7,
-      name: "General Surgery",
-      category: "surgical",
-      icon: Scissors,
-      color: "from-red-700 to-rose-800",
-      bgColor: "bg-red-50",
-      description: "Surgical treatment of diseases and injuries",
-      details:
-        "The General Surgery department performs a wide range of surgical procedures with modern equipment and techniques.",
-      facilities: [
-        "Operation Theaters",
-        "Surgical ICU",
-        "Pre-op Preparation",
-        "Post-op Recovery",
-      ],
-      faculty: 10,
-      students: 60,
-      image:
-        "https://images.pexels.com/photos/5452283/pexels-photo-5452283.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 8,
-      name: "Orthopedics",
-      category: "surgical",
-      icon: Bone,
-      color: "from-orange-600 to-amber-700",
-      bgColor: "bg-orange-50",
-      description: "Treatment of musculoskeletal disorders",
-      details:
-        "Our Orthopedics department specializes in treating bone, joint, muscle, and ligament conditions.",
-      facilities: [
-        "Orthopedic OT",
-        "Physiotherapy Unit",
-        "X-ray Facility",
-        "Plaster Room",
-      ],
-      faculty: 8,
-      students: 40,
-      image:
-        "https://images.pexels.com/photos/5452266/pexels-photo-5452266.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 9,
-      name: "Pediatrics",
-      category: "clinical",
-      icon: Baby,
-      color: "from-pink-600 to-rose-700",
-      bgColor: "bg-pink-50",
-      description: "Medical care for infants, children, and adolescents",
-      details:
-        "The Pediatrics department provides specialized healthcare for children from birth to adolescence.",
-      facilities: [
-        "Pediatric Ward",
-        "NICU",
-        "Pediatric ICU",
-        "Vaccination Center",
-      ],
-      faculty: 9,
-      students: 50,
-      image:
-        "https://images.pexels.com/photos/5452295/pexels-photo-5452295.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 10,
-      name: "Obstetrics & Gynecology",
-      category: "clinical",
-      icon: Heart,
-      color: "from-purple-700 to-pink-800",
-      bgColor: "bg-purple-50",
-      description: "Women's reproductive health and childbirth",
-      details:
-        "Our OB-GYN department provides comprehensive care for women's health, pregnancy, and childbirth.",
-      facilities: [
-        "Labor Room",
-        "Operation Theater",
-        "Antenatal Clinic",
-        "Gynecology Ward",
-      ],
-      faculty: 7,
-      students: 45,
-      image:
-        "https://images.pexels.com/photos/5452287/pexels-photo-5452287.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 11,
-      name: "Ophthalmology",
-      category: "clinical",
-      icon: Eye,
-      color: "from-indigo-600 to-blue-700",
-      bgColor: "bg-indigo-50",
-      description: "Eye and vision care",
-      details:
-        "The Ophthalmology department provides comprehensive eye care including medical and surgical treatments.",
-      facilities: [
-        "Eye OT",
-        "Refraction Unit",
-        "Retina Clinic",
-        "Glaucoma Center",
-      ],
-      faculty: 4,
-      students: 30,
-      image:
-        "https://images.pexels.com/photos/5452280/pexels-photo-5452280.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 12,
-      name: "ENT",
-      category: "surgical",
-      icon: Waves,
-      color: "from-cyan-600 to-blue-700",
-      bgColor: "bg-cyan-50",
-      description: "Ear, Nose, and Throat disorders",
-      details:
-        "Our ENT department specializes in treating disorders of the ear, nose, throat, and related structures.",
-      facilities: [
-        "ENT OT",
-        "Audiometry Room",
-        "Endoscopy Unit",
-        "Speech Therapy",
-      ],
-      faculty: 5,
-      students: 35,
-      image:
-        "https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 13,
-      name: "Dermatology",
-      category: "clinical",
-      icon: Shield,
-      color: "from-emerald-600 to-teal-700",
-      bgColor: "bg-emerald-50",
-      description: "Skin, hair, and nail disorders",
-      details:
-        "The Dermatology department provides treatment for various skin conditions and cosmetic procedures.",
-      facilities: [
-        "Dermatology Clinic",
-        "Phototherapy Unit",
-        "Cosmetic Center",
-        "Allergy Testing",
-      ],
-      faculty: 3,
-      students: 25,
-      image:
-        "https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 14,
-      name: "Psychiatry",
-      category: "clinical",
-      icon: Brain,
-      color: "from-violet-600 to-purple-700",
-      bgColor: "bg-violet-50",
-      description: "Mental health and behavioral disorders",
-      details:
-        "Our Psychiatry department provides comprehensive mental health services and counseling.",
-      facilities: [
-        "Counseling Rooms",
-        "Group Therapy Hall",
-        "Psychiatric Ward",
-        "Rehabilitation Center",
-      ],
-      faculty: 4,
-      students: 20,
-      image:
-        "https://images.pexels.com/photos/5452274/pexels-photo-5452274.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 15,
-      name: "Radiology",
-      category: "clinical",
-      icon: Scan,
-      color: "from-slate-600 to-gray-700",
-      bgColor: "bg-slate-50",
-      description: "Medical imaging and diagnostics",
-      details:
-        "The Radiology department provides advanced imaging services for accurate diagnosis.",
-      facilities: ["X-ray Unit", "CT Scan", "MRI", "Ultrasound"],
-      faculty: 6,
-      students: 30,
-      image:
-        "https://images.pexels.com/photos/5452299/pexels-photo-5452299.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 16,
-      name: "Anesthesiology",
-      category: "clinical",
-      icon: Thermometer,
-      color: "from-amber-600 to-orange-700",
-      bgColor: "bg-amber-50",
-      description: "Perioperative care and pain management",
-      details:
-        "Our Anesthesiology department ensures safe anesthesia during surgeries and manages pain.",
-      facilities: [
-        "Pre-op Assessment",
-        "Recovery Room",
-        "Pain Clinic",
-        "Critical Care",
-      ],
-      faculty: 5,
-      students: 25,
-      image:
-        "https://images.pexels.com/photos/5452290/pexels-photo-5452290.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
   ];
 
   const filteredDepartments = departments.filter((dept) => {
@@ -403,8 +43,20 @@ const Departments = () => {
     setSelectedDepartment(null);
   };
 
+  useEffect(() => {
+    if (selectedDepartment) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [selectedDepartment]);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className=" bg-white">
       {/* Hero Section */}
       <section className="relative text-black overflow-hidden py-10">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -482,7 +134,7 @@ const Departments = () => {
       </section>
 
       {/* Departments Grid */}
-      <section className="py-16 bg-white">
+      <section className="lg:py-16 py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredDepartments.length === 0 ? (
             <div className="text-center py-16">
@@ -615,30 +267,30 @@ const Departments = () => {
 
       {/* Department Detail Modal */}
       {selectedDepartment && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+          <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl">
             {/* Close Button */}
             <button
               onClick={closeDepartmentModal}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-300"
+              className="absolute top-3 right-3 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-300"
             >
               <ArrowRight className="w-5 h-5 rotate-45" />
             </button>
 
             {/* Modal Content */}
-            <div className="p-8">
+            <div className="p-4 sm:p-6 md:p-8">
               {/* Header */}
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex flex-col sm:flex-row items-center gap-4 mb-6 text-center sm:text-left">
                 <div
-                  className={`w-16 h-16 bg-gradient-to-br ${selectedDepartment.color} rounded-full flex items-center justify-center`}
+                  className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${selectedDepartment.color} rounded-full flex items-center justify-center`}
                 >
-                  <selectedDepartment.icon className="w-8 h-8 text-white" />
+                  <selectedDepartment.icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                     {selectedDepartment.name}
                   </h2>
-                  <p className="text-gray-600 capitalize">
+                  <p className="text-gray-600 capitalize text-sm sm:text-base">
                     {selectedDepartment.category.replace("-", " ")} Department
                   </p>
                 </div>
@@ -655,33 +307,35 @@ const Departments = () => {
 
               {/* Description */}
               <div className="mb-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">
                   About the Department
                 </h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {selectedDepartment.details}
                 </p>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <div className="bg-blue-50 p-4 rounded-xl">
                   <div className="flex items-center gap-2 mb-2">
                     <UserCheck className="w-5 h-5 text-blue-600" />
-                    <span className="font-semibold text-gray-900">Faculty</span>
+                    <span className="font-semibold text-gray-900 text-sm sm:text-base">
+                      Faculty
+                    </span>
                   </div>
-                  <div className="text-2xl font-bold text-blue-600">
+                  <div className="text-xl sm:text-2xl font-bold text-blue-600">
                     {selectedDepartment.faculty}
                   </div>
                 </div>
                 <div className="bg-green-50 p-4 rounded-xl">
                   <div className="flex items-center gap-2 mb-2">
                     <Users className="w-5 h-5 text-green-600" />
-                    <span className="font-semibold text-gray-900">
+                    <span className="font-semibold text-gray-900 text-sm sm:text-base">
                       Students
                     </span>
                   </div>
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-xl sm:text-2xl font-bold text-green-600">
                     {selectedDepartment.students}
                   </div>
                 </div>
@@ -689,25 +343,27 @@ const Departments = () => {
 
               {/* Facilities */}
               <div className="mb-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">
                   Facilities & Equipment
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {selectedDepartment.facilities.map((facility, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-700">{facility}</span>
+                      <span className="text-gray-700 text-sm sm:text-base">
+                        {facility}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-4">
-                <button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="w-full sm:flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
                   Contact Department
                 </button>
-                <button className="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300">
+                <button className="w-full sm:flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300">
                   View Faculty
                 </button>
               </div>

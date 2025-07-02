@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import Departments from "./Department";
 import Testimonials from "./Testimonial";
 import "../globals.css";
+import NoticeBoard from "./NoticeBoard";
 
 const MainPage = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -21,7 +22,7 @@ const MainPage = () => {
       const totalHeight = document.body.scrollHeight - window.innerHeight;
       const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
-      
+
       // Show/hide back-to-top button when scrolled beyond 20% of page
       setShowScrollButton(window.scrollY > window.innerHeight * 0.2);
     };
@@ -33,12 +34,13 @@ const MainPage = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
   return (
-    <div className="relative font-serif">
+    <div className="relative">
+      <NoticeBoard />
       <Header />
       <AboutUs />
       <Services />
@@ -51,9 +53,9 @@ const MainPage = () => {
 
       {/* Back to top button with circular progress */}
       {showScrollButton && (
-        <div className="fixed bottom-8 right-8 z-40">
+        <div className="fixed bottom-8 right-4 md:right-8 z-40">
           {/* Circular progress background */}
-          <svg className="w-14 h-14 transform -rotate-90" viewBox="0 0 36 36">
+          <svg className="w-14 h-14 lg:w-16 lg:h-16 transform -rotate-90" viewBox="0 0 36 36">
             {/* Full circle (background) */}
             <circle
               cx="18"
@@ -76,12 +78,12 @@ const MainPage = () => {
               strokeLinecap="round"
             />
           </svg>
-          
+
           {/* Button in center of progress circle */}
           <button
             onClick={scrollToTop}
             className="absolute cursor-pointer top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                      w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center 
+                      w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-blue-500 text-white flex items-center justify-center 
                       shadow-lg hover:bg-blue-600 transition-colors duration-300"
             aria-label="Back to top"
           >

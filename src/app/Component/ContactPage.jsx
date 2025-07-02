@@ -10,33 +10,18 @@ import {
   Building,
   GraduationCap,
   Shield,
-  Globe,
   ExternalLink,
   CheckCircle,
-  AlertCircle,
-  Calendar,
   Users,
-  Heart,
   Award,
   Stethoscope,
   Activity,
   Navigation,
   Map,
   Smartphone,
-  Printer,
   Fan as Fax,
   UserCheck,
   BookOpen,
-  Target,
-  ChevronRight,
-  Eye,
-  Ear,
-  SquareCheckIcon,
-  Brain,
-  X,
-  Microscope,
-  Syringe,
-  Ambulance,
 } from "lucide-react";
 
 const ContactPage = () => {
@@ -116,26 +101,10 @@ const ContactPage = () => {
     { title: "Student Query", icon: Users, color: "bg-purple-600", url: "#" },
   ];
 
-  const departments = [
-    { name: "General Medicine", icon: Stethoscope },
-    { name: "General Surgery", icon: Activity },
-    { name: "Pediatrics", icon: Heart },
-    { name: "Obstetrics & Gynecology", icon: Users },
-    { name: "Orthopedics", icon: Target },
-    { name: "Ophthalmology", icon: Eye },
-    { name: "ENT", icon: Ear },
-    { name: "Dermatology", icon: SquareCheckIcon },
-    { name: "Psychiatry", icon: Brain },
-    { name: "Radiology", icon: X },
-    { name: "Pathology", icon: Microscope },
-    { name: "Anesthesiology", icon: Syringe },
-    { name: "Emergency Medicine", icon: Ambulance },
-  ];
-
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden">
+      {/* <section className="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
@@ -179,7 +148,7 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Main Contact Section */}
       <section className="py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -595,43 +564,6 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Departments Quick Access */}
-      {/* <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
-              Department Contacts
-            </h2>
-            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-4 sm:mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-              Connect directly with our specialized departments for specific
-              medical consultations and services.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-            {departments.map((dept, index) => (
-              <a
-                key={index}
-                href="#"
-                className="bg-gradient-to-br from-blue-50 to-purple-50 p-3 sm:p-4 rounded-lg hover:shadow-md transition-all duration-300 cursor-pointer group"
-              >
-                <div className="text-center">
-                  <dept.icon className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mx-auto mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="font-medium text-gray-900 text-xs sm:text-sm">
-                    {dept.name}
-                  </h3>
-                  <div className="flex items-center justify-center mt-1 text-blue-600 text-xs">
-                    <span>Contact</span>
-                    <ChevronRight className="w-3 h-3" />
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 };

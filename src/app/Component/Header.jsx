@@ -22,6 +22,7 @@ import {
   Stethoscope,
   Ambulance,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -190,6 +191,31 @@ const Header = () => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
   };
 
+  // Animation variants for the mobile menu
+  const mobileMenuVariants = {
+    hidden: { x: "-100%" },
+    visible: { x: 0 },
+    exit: { x: "-100%" },
+  };
+
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <div className="relative">
       {/* Top Contact Bar */}
@@ -222,7 +248,7 @@ const Header = () => {
       <header
         className={`bg-white shadow-md transition-all duration-300 ${
           isSticky
-            ? "fixed top-0 left-0 right-0 z-50 shadow-xl animate-dropIn"
+            ? "fixed top-0 left-0 right-0 z-40 shadow-xl animate-dropIn"
             : ""
         }`}
       >
@@ -360,104 +386,141 @@ const Header = () => {
             </div>
 
             {/* Mobile Navigation - Slides from left */}
-            {isMobileMenuOpen && (
-              <div className="lg:hidden fixed inset-0 z-50">
-                {/* Overlay */}
-                <div
-                  className="absolute inset-0 bg-black/60 "
-                  onClick={toggleMobileMenu}
-                ></div>
+            <AnimatePresence>
+              {isMobileMenuOpen && (
+                <div className="lg:hidden fixed inset-0 z-50">
+                  {/* Overlay with fade animation */}
+                  <motion.div
+                    className="absolute inset-0 bg-black/60"
+                    onClick={toggleMobileMenu}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={overlayVariants}
+                    transition={{ duration: 0.3 }}
+                  ></motion.div>
 
-                {/* Menu Content */}
-                <div className="absolute left-0 top-0 h-full w-3/4 max-w-xs bg-blue-900 shadow-xl transform transition-transform duration-300 ease-in-out">
-                  <div className="h-full flex flex-col">
-                    {/* Menu Header */}
-                    <div className="flex items-center justify-between p-4 border-b border-blue-800">
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg bg-white">
-                        <img
-                          src="/logo.png"
-                          alt="logo"
-                          className="w-full h-full object-cover"
-                        />
+                  {/* Menu Content with slide animation */}
+                  <motion.div
+                    className="absolute left-0 top-0 h-full w-3/4 max-w-xs bg-blue-900 shadow-xl"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={mobileMenuVariants}
+                    transition={{
+                      type: "tween",
+                      ease: "easeInOut",
+                      duration: 0.3,
+                    }}
+                  >
+                    <div className="h-full flex flex-col">
+                      {/* Menu Header */}
+                      <div className="flex items-center justify-between p-4 border-b border-blue-800">
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg bg-white">
+                          <img
+                            src="/logo.png"
+                            alt="logo"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <button
+                          onClick={toggleMobileMenu}
+                          className="p-2 rounded-md text-white hover:bg-blue-800 transition-colors duration-200"
+                        >
+                          <X className="w-6 h-6" />
+                        </button>
                       </div>
-                      <button
-                        onClick={toggleMobileMenu}
-                        className="p-2 rounded-md text-white hover:bg-blue-800 transition-colors duration-200"
-                      >
-                        <X className="w-6 h-6" />
-                      </button>
-                    </div>
 
-                    {/* Action Buttons */}
-                    <div className="border-b border-blue-700 p-4">
-                      <div className="grid grid-cols-2 gap-2">
-                        {actionButtons.map((button, index) => (
-                          <a
+                      {/* Action Buttons */}
+                      <div className="border-b border-blue-700 p-4">
+                        <div className="grid grid-cols-2 gap-2">
+                          {actionButtons.map((button, index) => (
+                            <motion.a
+                              key={index}
+                              href={button.href}
+                              className={`${button.bg} text-white px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-200 flex items-center justify-center space-x-2`}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.05 + 0.2 }}
+                            >
+                              <button.icon className="w-3 h-3" />
+                              <span>{button.name}</span>
+                            </motion.a>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Navigation Items */}
+                      <div className="flex-1 overflow-y-auto py-2">
+                        {navigationItems.map((item, index) => (
+                          <motion.div
                             key={index}
-                            href={button.href}
-                            className={`${button.bg} text-white px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-200 flex items-center justify-center space-x-2`}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.03 + 0.2 }}
                           >
-                            <button.icon className="w-3 h-3" />
-                            <span>{button.name}</span>
-                          </a>
+                            <div
+                              className="flex items-center justify-between px-4 py-3 hover:bg-blue-800 transition-colors duration-200 border-b border-blue-800"
+                              onClick={() =>
+                                item.dropdown && handleDropdownToggle(item.name)
+                              }
+                            >
+                              <div className="flex items-center space-x-3">
+                                <item.icon className="w-4 h-4" />
+                                <span className="text-sm">{item.name}</span>
+                              </div>
+                              {item.dropdown && (
+                                <ChevronDown
+                                  className={`w-4 h-4 transition-transform duration-200 ${
+                                    activeDropdown === item.name
+                                      ? "rotate-180"
+                                      : ""
+                                  }`}
+                                />
+                              )}
+                            </div>
+
+                            {/* Dropdown */}
+                            {item.dropdown && activeDropdown === item.name && (
+                              <motion.div
+                                className="bg-blue-800 border-l-4 border-blue-400"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                {item.dropdown.map(
+                                  (dropdownItem, dropIndex) => (
+                                    <motion.a
+                                      key={dropIndex}
+                                      href="#"
+                                      className="px-8 py-2 text-xs hover:bg-blue-700 transition-colors duration-200 text-blue-100 flex items-center space-x-2"
+                                      initial={{ opacity: 0 }}
+                                      animate={{ opacity: 1 }}
+                                      transition={{ delay: dropIndex * 0.05 }}
+                                    >
+                                      {item.name === "Hospital" &&
+                                      dropIndex === 3 ? (
+                                        <Ambulance className="w-3 h-3" />
+                                      ) : item.name === "Department" ? (
+                                        <Stethoscope className="w-3 h-3" />
+                                      ) : (
+                                        <item.icon className="w-3 h-3" />
+                                      )}
+                                      <span>{dropdownItem}</span>
+                                    </motion.a>
+                                  )
+                                )}
+                              </motion.div>
+                            )}
+                          </motion.div>
                         ))}
                       </div>
                     </div>
-
-                    {/* Navigation Items */}
-                    <div className="flex-1 overflow-y-auto py-2">
-                      {navigationItems.map((item, index) => (
-                        <div key={index}>
-                          <div
-                            className="flex items-center justify-between px-4 py-3 hover:bg-blue-800 transition-colors duration-200 border-b border-blue-800"
-                            onClick={() =>
-                              item.dropdown && handleDropdownToggle(item.name)
-                            }
-                          >
-                            <div className="flex items-center space-x-3">
-                              <item.icon className="w-4 h-4" />
-                              <span className="text-sm">{item.name}</span>
-                            </div>
-                            {item.dropdown && (
-                              <ChevronDown
-                                className={`w-4 h-4 transition-transform duration-200 ${
-                                  activeDropdown === item.name
-                                    ? "rotate-180"
-                                    : ""
-                                }`}
-                              />
-                            )}
-                          </div>
-
-                          {/* Dropdown */}
-                          {item.dropdown && activeDropdown === item.name && (
-                            <div className="bg-blue-800 border-l-4 border-blue-400">
-                              {item.dropdown.map((dropdownItem, dropIndex) => (
-                                <a
-                                  key={dropIndex}
-                                  href="#"
-                                  className="px-8 py-2 text-xs hover:bg-blue-700 transition-colors duration-200 text-blue-100 flex items-center space-x-2"
-                                >
-                                  {item.name === "Hospital" &&
-                                  dropIndex === 3 ? (
-                                    <Ambulance className="w-3 h-3" />
-                                  ) : item.name === "Department" ? (
-                                    <Stethoscope className="w-3 h-3" />
-                                  ) : (
-                                    <item.icon className="w-3 h-3" />
-                                  )}
-                                  <span>{dropdownItem}</span>
-                                </a>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
-            )}
+              )}
+            </AnimatePresence>
           </div>
         </nav>
       </header>

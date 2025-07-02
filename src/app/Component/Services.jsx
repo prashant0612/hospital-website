@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  GraduationCap,
-  Stethoscope,
-  Briefcase,
-  Heart,
-  ChevronRight,
-  Star,
-  Users,
-  Award,
-  Clock,
-  Shield,
-  Book,
-  Activity,
-} from "lucide-react";
+import { ChevronRight, Star, Users, Award, Clock, Shield } from "lucide-react";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { services } from "../Data/data";
 
 function Services() {
   const [activeService, setActiveService] = useState(0);
@@ -25,149 +14,6 @@ function Services() {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  const services = [
-    {
-      id: 1,
-      title: "Academic Support",
-      icon: <GraduationCap className="w-6 h-6" />,
-      image: "/service/pic1.jpg",
-      items: [
-        "Tutoring for challenging subjects",
-        "Study skills workshops",
-        "Access to research resources",
-        "Academic counseling",
-      ],
-      accent: "blue",
-      stats: { number: "95%", label: "Success" },
-    },
-    {
-      id: 2,
-      title: "Clinical Training",
-      icon: <Stethoscope className="w-6 h-6" />,
-      image: "/service/pic2.jpg",
-      items: [
-        "Hands-on clinical training",
-        "Experienced supervision",
-        "Clinical rotations",
-        "Simulation labs",
-      ],
-      accent: "emerald",
-      stats: { number: "500+", label: "Hours" },
-    },
-    {
-      id: 3,
-      title: "Career Services",
-      icon: <Briefcase className="w-6 h-6" />,
-      image: "/service/pic3.jpg",
-      items: [
-        "Career path guidance",
-        "Residency applications",
-        "Job placement",
-        "Professional workshops",
-      ],
-      accent: "violet",
-      stats: { number: "98%", label: "Placement" },
-    },
-    {
-      id: 4,
-      title: "Mental Health",
-      icon: <Heart className="w-6 h-6" />,
-      image: "/service/pic4.jpg",
-      items: [
-        "Counseling support",
-        "Stress management",
-        "Confidential sessions",
-        "Wellness programs",
-      ],
-      accent: "rose",
-      stats: { number: "24/7", label: "Support" },
-    },
-    {
-      id: 5,
-      title: "Healthcare Services",
-      icon: <Shield className="w-6 h-6" />,
-      image: "/service/pic5.jpg",
-      items: [
-        "On-campus healthcare facilities",
-        "Preventive health services",
-        "Chronic condition support",
-        "Immunizations",
-      ],
-      accent: "blue",
-      stats: { number: "100%", label: "Coverage" },
-    },
-    {
-      id: 6,
-      title: "Financial Aid",
-      icon: <Award className="w-6 h-6" />,
-      image: "/service/pic6.jpg",
-      items: [
-        "Financial aid options",
-        "Scholarship assistance",
-        "Student loan counseling",
-        "Grant applications",
-      ],
-      accent: "emerald",
-      stats: { number: "$10M+", label: "Awarded" },
-    },
-    {
-      id: 7,
-      title: "Student Life",
-      icon: <Users className="w-6 h-6" />,
-      image: "/service/pic7.jpg",
-      items: [
-        "Medical student organizations",
-        "Community service opportunities",
-        "Networking events",
-        "Social activities",
-      ],
-      accent: "violet",
-      stats: { number: "50+", label: "Clubs" },
-    },
-    {
-      id: 8,
-      title: "Professional Development",
-      icon: <Star className="w-6 h-6" />,
-      image: "/service/pic8.jpg",
-      items: [
-        "Career workshops",
-        "Academic progress support",
-        "Publishing assistance",
-        "Leadership seminars",
-      ],
-      accent: "rose",
-      stats: { number: "100+", label: "Events" },
-    },
-    {
-      id: 9,
-      title: "Library Resources",
-      icon: <Book className="w-6 h-6" />,
-      image: "/service/pic9.jpeg",
-      items: [
-        "Medical journal access",
-        "Research databases",
-        "Study spaces",
-        "Librarian support",
-      ],
-      accent: "blue",
-      stats: { number: "10K+", label: "Resources" },
-    },
-    {
-      id: 10,
-      title: "Well-being Services",
-      icon: <Activity className="w-6 h-6" />,
-      image: "/service/pic10.jpg",
-      items: [
-        "Wellness programs",
-        "Fitness facilities",
-        "Stress management",
-        "Work-life balance",
-      ],
-      accent: "emerald",
-      stats: { number: "80%", label: "Engagement" },
-    },
-  ];
 
   const features = [
     { icon: <Users className="w-5 h-5" />, text: "Faculty", number: "200+" },
@@ -215,7 +61,7 @@ function Services() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+    <div className=" bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.05)_1px,transparent_0)] bg-[length:20px_20px]"></div>

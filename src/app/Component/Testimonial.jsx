@@ -38,149 +38,13 @@ import {
   Search,
 } from "lucide-react";
 
+import { testimonials } from "../Data/data";
+
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const testimonials = [
-    {
-      id: 1,
-      name: "Dr. Priya Sharma",
-      role: "Alumni - Class of 2022",
-      category: "alumni",
-      image:
-        "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "HMCH provided me with exceptional medical education and practical training. The faculty's dedication and the hospital's advanced facilities prepared me well for my medical career. I'm now successfully practicing as a general physician, thanks to the strong foundation I received here.",
-      location: "Patna, Bihar",
-      date: "2024-01-15",
-      verified: true,
-      specialty: "General Medicine",
-      type: "text",
-    },
-    {
-      id: 2,
-      name: "Rajesh Kumar",
-      role: "Patient",
-      category: "patient",
-      image:
-        "https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "The care I received at HMCH was outstanding. The medical staff was compassionate, professional, and highly skilled. The facilities are modern and clean. My surgery was successful, and the post-operative care was excellent. I highly recommend this hospital to anyone seeking quality healthcare.",
-      location: "Patna, Bihar",
-      date: "2024-02-20",
-      verified: true,
-      treatment: "Cardiac Surgery",
-      type: "text",
-    },
-    {
-      id: 3,
-      name: "Anita Singh",
-      role: "Current Student - 3rd Year MBBS",
-      category: "student",
-      image:
-        "https://images.pexels.com/photos/5452274/pexels-photo-5452274.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "Studying at HMCH has been an incredible journey. The curriculum is comprehensive, and the practical exposure in the hospital is invaluable. The professors are knowledgeable and always willing to help. The college provides excellent opportunities for research and clinical experience.",
-      location: "Patna, Bihar",
-      date: "2024-03-10",
-      verified: true,
-      year: "3rd Year",
-      type: "text",
-    },
-    {
-      id: 4,
-      name: "Dr. Amit Verma",
-      role: "Faculty - Department of Surgery",
-      category: "faculty",
-      image:
-        "https://images.pexels.com/photos/5452299/pexels-photo-5452299.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "Working at HMCH has been professionally rewarding. The institution supports faculty development and provides excellent resources for teaching and research. The collaborative environment and commitment to excellence make it a great place to work and contribute to medical education.",
-      location: "Patna, Bihar",
-      date: "2024-01-30",
-      verified: true,
-      department: "General Surgery",
-      type: "text",
-    },
-    {
-      id: 5,
-      name: "Sunita Devi",
-      role: "Patient Family Member",
-      category: "patient",
-      image:
-        "https://images.pexels.com/photos/5452290/pexels-photo-5452290.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "My mother was treated in the ICU for two weeks. The nursing staff and doctors were incredibly caring and kept us informed throughout. The facilities are top-notch, and the 24/7 care gave us peace of mind during a difficult time. Thank you, HMCH team!",
-      location: "Patna, Bihar",
-      date: "2024-02-05",
-      verified: true,
-      treatment: "Critical Care",
-      type: "text",
-    },
-    {
-      id: 6,
-      name: "Dr. Kavita Jha",
-      role: "Alumni - Class of 2021",
-      category: "alumni",
-      image:
-        "https://images.pexels.com/photos/5452287/pexels-photo-5452287.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "HMCH shaped my medical career beautifully. The hands-on training, research opportunities, and mentorship from experienced faculty prepared me for specialization. I'm now pursuing my MD in Pediatrics, and I credit my success to the strong foundation from HMCH.",
-      location: "Delhi, India",
-      date: "2024-01-20",
-      verified: true,
-      specialty: "Pediatrics",
-      type: "text",
-    },
-    {
-      id: 7,
-      name: "Ravi Prasad",
-      role: "Current Student - 2nd Year MBBS",
-      category: "student",
-      image:
-        "https://images.pexels.com/photos/5452280/pexels-photo-5452280.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "The learning environment at HMCH is exceptional. The anatomy lab, modern equipment, and clinical exposure from the first year itself make learning engaging. The college also focuses on personality development and communication skills, which are crucial for doctors.",
-      location: "Patna, Bihar",
-      date: "2024-03-05",
-      verified: true,
-      year: "2nd Year",
-      type: "text",
-    },
-    {
-      id: 8,
-      name: "Dr. Neha Gupta",
-      role: "Faculty - Department of Gynecology",
-      category: "faculty",
-      image:
-        "https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "HMCH provides an excellent platform for both teaching and clinical practice. The administration is supportive, and the infrastructure is constantly being upgraded. It's fulfilling to be part of an institution that prioritizes both education and patient care.",
-      location: "Patna, Bihar",
-      date: "2024-02-15",
-      verified: true,
-      department: "Obstetrics & Gynecology",
-      type: "text",
-    },
-    {
-      id: 10,
-      name: "Pooja Kumari",
-      role: "Current Student - 1st Year MBBS",
-      category: "student",
-      image:
-        "https://images.pexels.com/photos/5452295/pexels-photo-5452295.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-      text: "As a first-year student, I was nervous about medical college, but HMCH made the transition smooth. The orientation program, senior-junior interaction, and supportive faculty created a welcoming environment. The college truly cares about student welfare and academic excellence.",
-      location: "Patna, Bihar",
-      date: "2024-03-15",
-      verified: true,
-      year: "1st Year",
-      type: "text",
-    },
-  ];
 
   const categories = [
     { id: "all", name: "All Testimonials", count: testimonials.length },
@@ -276,47 +140,47 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <section className="relative text-black bg-gray-50 overflow-hidden py-10">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
+            {/* Icon Circle */}
             <div className="flex justify-center mb-6 md:mb-8">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                <Quote className="w-8 h-8 md:w-10 md:h-10 text-white" />
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-black/5 backdrop-blur-sm rounded-full flex items-center justify-center border border-black/10">
+                <Quote className="w-8 h-8 md:w-10 md:h-10 text-black" />
               </div>
             </div>
 
+            {/* Heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
               What People
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">
-                Say About Us
-              </span>
+              <span className="block">Say About Us</span>
             </h1>
 
-            <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
+            {/* Decorative Line */}
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-1 bg-gradient-to-r from-gray-300 via-gray-600 to-gray-300 rounded-full animate-expand"></div>
+            </div>
+
+            {/* Description */}
+            <p className="text-lg md:text-xl mb-6 md:mb-8 text-gray-700 max-w-3xl mx-auto leading-relaxed">
               Real experiences from our students, faculty, alumni, and patients
               who have been part of our medical community
             </p>
 
+            {/* Stats */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-              <div className="flex items-center gap-2 text-blue-100 text-sm sm:text-base">
-                <Star className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
+              <div className="flex items-center gap-2 text-sm sm:text-base text-black">
+                <Star className="w-5 h-5 text-yellow-500 fill-current" />
                 <span>4.9/5 Average Rating</span>
               </div>
-              <div className="flex items-center gap-2 text-blue-100 text-sm sm:text-base">
-                <Users className="w-4 h-4 sm:w-5 sm:h-5" />
+              <div className="flex items-center gap-2 text-sm sm:text-base text-black">
+                <Users className="w-5 h-5" />
                 <span>500+ Reviews</span>
               </div>
-              <div className="flex items-center gap-2 text-blue-100 text-sm sm:text-base">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+              <div className="flex items-center gap-2 text-sm sm:text-base text-black">
+                <CheckCircle className="w-5 h-5 text-green-600" />
                 <span>100% Verified</span>
               </div>
             </div>
@@ -509,7 +373,7 @@ const Testimonials = () => {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* <section className="py-12 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
@@ -540,7 +404,6 @@ const Testimonials = () => {
                     key={testimonial.id}
                     className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group hover:-translate-y-1"
                   >
-                    {/* Header */}
                     <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                       <div className="relative">
                         <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden shadow-md">
@@ -569,7 +432,6 @@ const Testimonials = () => {
                       </div>
                     </div>
 
-                    {/* Content */}
                     <div className="mb-4 md:mb-6">
                       <Quote className="w-6 h-6 md:w-8 md:h-8 text-blue-600 mb-2 md:mb-3 opacity-50" />
                       <p className="text-gray-700 text-sm md:text-base leading-relaxed line-clamp-4">
@@ -577,7 +439,6 @@ const Testimonials = () => {
                       </p>
                     </div>
 
-                    {/* Footer */}
                     <div className="flex items-center justify-between">
                       <div
                         className={`inline-flex items-center gap-1 md:gap-2 px-2 py-1 md:px-3 md:py-1 bg-gradient-to-r ${getCategoryColor(
@@ -597,7 +458,6 @@ const Testimonials = () => {
                       </div>
                     </div>
 
-                    {/* Additional Info */}
                     {(testimonial.specialty ||
                       testimonial.treatment ||
                       testimonial.department ||
@@ -637,7 +497,7 @@ const Testimonials = () => {
             </div>
           )}
         </div>
-      </section>
+      </section> */}
 
       {/* Statistics Section */}
       <section className="py-12 md:py-20 bg-white">
